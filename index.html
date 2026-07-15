@@ -5,6 +5,19 @@
   <title>An envelope for Alena</title>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Добавляем стили для второго сообщения */
+    .message.second {
+      top: calc(50% + 60px);
+      animation-delay: 3s;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+
+    .message.second.show {
+      opacity: 1;
+    }
+  </style>
 </head>
 <body>
   <div class="instruction" id="instruction">Тыкай балда>< </div>
@@ -19,6 +32,9 @@
   </div>
 
   <div class="message" id="message">Алена Вечор-Симпатишная такая и смешная оч такая прям вся бебебебебеббебебебебебебе</div>
+  
+  <!-- ВТОРОЕ СООБЩЕНИЕ -->
+  <div class="message second" id="message2">ЧЕ НЕ ТАК-ТО</div>
 
   <audio id="princeMusic" src="temny_prinz.mp3" loop preload="auto"></audio>
 
@@ -46,10 +62,15 @@
       document.getElementById("envelope").classList.add("open");
       document.getElementById("instruction").classList.add("hide");
       
-      // Показываем сообщение через 1.5 секунды
+      // Показываем первое сообщение через 1.5 секунды
       setTimeout(() => {
         document.getElementById("message").classList.add("show");
       }, 1500);
+      
+      // Показываем второе сообщение через 3 секунды после первого (то есть через 4.5 секунды от открытия)
+      setTimeout(() => {
+        document.getElementById("message2").classList.add("show");
+      }, 4500);
     };
 
     // Запасной вариант: клик в любом месте включает музыку
